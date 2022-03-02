@@ -1,17 +1,24 @@
 import fs from 'fs/promises'
 import path from 'path'
+import Link from 'next/link'
 
 function HomePage(props) {
   const { products } = props
 
-  return products.map(product => {
-    return (
-      <div key={product.id}>
-        <h2>{product.title}</h2>
-        <p>{product.description}</p>
-      </div>
-    )
-  })
+  return (
+    <ul>
+      {products.map(product => {
+        return (
+          <li key={product.id}>
+            <Link href={`/${product.id}`}>
+              <h2>{product.title}</h2>
+              <p>{product.description}</p>
+            </Link>
+          </li>
+        )
+      })}
+    </ul>
+  )
 }
 
 export async function getStaticProps() {
