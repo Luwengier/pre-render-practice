@@ -5,6 +5,8 @@ function UserProfilePage(props) {
 export default UserProfilePage
 
 export async function getServerSideProps(context) {
+  console.log('Server side code')
+
   return {
     props: {
       username: 'Max'
